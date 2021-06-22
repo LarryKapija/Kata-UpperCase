@@ -11,6 +11,7 @@ void main() {
   });
 
   test('Test 3', () {
-    () => {expect(upperCase(null), FormatException())};
+    // ignore: deprecated_member_use
+    expect(() => upperCase(null), throwsA(isInstanceOf<ArgumentError>()));
   });
 }

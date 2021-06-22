@@ -30,21 +30,21 @@ var _dict = <String, String>{
 
 String upperCase(String word) {
   var wordSplitted;
-  try {
-    wordSplitted = word.split('');
-  } on Exception catch (e) {
-    throw FormatException(e.toString());
-  }
 
   var ouput = '';
 
-  wordSplitted.forEach((character) {
-    try {
-      ouput += _dict[character];
-    } catch (e) {
-      ouput += character;
-    }
-  });
+  try {
+    wordSplitted = word.split('');
+    wordSplitted.forEach((character) {
+      try {
+        ouput += _dict[character];
+      } catch (e) {
+        ouput += character;
+      }
+    });
+  } catch (e) {
+    throw ArgumentError();
+  }
 
   return ouput;
 }
